@@ -1,0 +1,9 @@
+uniform shader image;
+uniform float2 imageSize;
+uniform float time;
+
+half4 main(float2 coord) {
+    half4 c = image.eval(coord);
+    float3 bg = mix(c.rgb, float3(0.08, 0.12, 0.17) * c.a, 0.78);
+    return half4(bg, c.a);
+}
